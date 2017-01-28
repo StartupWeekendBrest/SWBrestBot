@@ -20,7 +20,7 @@ var createMentorsMessage = function(type, mentorsList){
   }
 
   //TODO rm last ','
-  return createResponse(msg, message, mentorsList);
+  return createResponse(msg, msg, mentorsList);
 }
 
 var createError = function(statusCode, message){
