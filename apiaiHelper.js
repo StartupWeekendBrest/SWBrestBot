@@ -4,7 +4,7 @@
 var defaultSource = 'Stéphane Castrec';
 
 var createMentorsMessage = function(type, mentorsList){
-  var msg = 'Les mentors ' + type + 'sont ';
+  var msg = 'Les mentors ' + type + ' sont ';
   if(type){
     //we receive a tab
     for(mentor in mentorsList){

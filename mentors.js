@@ -78,6 +78,7 @@ var mentors = {
 var getMentors = function (type, callback){
   if(type){
     //search specific mentors
+    console.log("returning " + JSON.stringify(mentors[type]));
     callback(mentors[type]);
     return;
   }
