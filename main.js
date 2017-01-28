@@ -1,5 +1,9 @@
 var apiHelper = require('./apiaiHelper.js');
+//DAO
 var mentors = require('./mentors.js');
+var sponsors = require('./sponsors.js');
+var orgas = require('./sponsors.js');
+
 var bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
@@ -33,6 +37,18 @@ app.post('/apiwebhook', function(req, res){
             console.log("action.mentors_type");
             mentors.getMentors(request.result.parameters.mentors_type, function (mentorsList){
               res.send(apiHelper.createMentorsMessage(request.result.parameters.mentors_type, mentorsList));
+            });
+            break;
+        case 'orgas_search':
+                console.log("action.mentors_type");
+                orgas.getOrgas(function (oargas){
+                  res.send(apiHelper.createOrgasMessage(oargas));
+                });
+                break;
+        case 'sponsors_search':
+            console.log("action.mentors_type");
+            sponsors.getSponsors(function (sponsorsList){
+              res.send(apiHelper.createSponsorsMessage(sponsorsList));
             });
             break;
         case 'action.time':

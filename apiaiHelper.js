@@ -3,6 +3,36 @@
  */
 var defaultSource = 'Stéphane Castrec';
 
+var createOrgasMessage = function(orgaList){
+  var msg = 'Les orgas sont ';
+  var orga;
+  for(var i=0; i<orgaList.length; i++){
+    orga = orgaList[i];
+    if(orga.twitter){
+      msg += orga.twitter;
+    } else {
+      msg += orga.name;
+    }
+    if(i != orgaList.length-1){
+      msg += ', ';
+    }
+  }
+  return createResponse(msg, msg, sponsorsList);
+}
+
+var createSponsorsMessage = function(sponsorsList){
+  var msg = 'Les sponsors sont ';
+  var sponsor;
+  for(var i=0; i<sponsorsList.length; i++){
+    sponsor = sponsorsList[i];
+    msg += sponsor.name;
+    if(i != sponsorsList.length-1){
+      msg += ', ';
+    }
+  }
+  return createResponse(msg, msg, sponsorsList);
+}
+
 var createMentorsMessage = function(type, mentorsList){
   var msg = 'Les mentors ' + type + ' sont ';
   if(type){
@@ -15,13 +45,14 @@ var createMentorsMessage = function(type, mentorsList){
       } else {
         msg += mentor.name;
       }
-      msg += ', ';
+      if(i != mentorsList.length-1){
+        msg += ', ';
+      }
     }
   } else {
     msg = "La liste des mentors est disponible ici. http://www.up.co/communities/france/brest/startup-weekend/10230 (Ou demande moi une compétence particulière)";
   }
 
-  //TODO rm last ','
   return createResponse(msg, msg, mentorsList);
 }
 
@@ -58,5 +89,7 @@ var createResponse = function(speech, message, data, source){
 module.exports = {
   createError : createError,
   createResponse : createResponse,
-  createMentorsMessage: createMentorsMessage
+  createMentorsMessage: createMentorsMessage,
+  createSponsorsMessage : createSponsorsMessage,
+  createOrgasMessage : createOrgasMessage,
 };
