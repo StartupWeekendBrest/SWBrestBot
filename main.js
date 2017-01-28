@@ -1,5 +1,5 @@
 var apiHelper = require('./apiaiHelper.js');
-
+var mentors = require('./mentors.js');
 var bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
@@ -22,6 +22,12 @@ app.post('/apiwebhook', function(req, res){
     var request = req.body;
     if(request.result){
       switch (request.result.action) {
+        case 'mentor_search':
+            console.log("action.mentors_type");
+            mentors.getMentors(action.mentors_type, function (mentorsList){
+              res.send(apiaiHelper.createMentorsMessage(action.mentors_type, mentors));              
+            })
+            break;
         case 'action.time':
             console.log("action.time");
             getTime(function(result){

@@ -1,7 +1,22 @@
 /**
  * This class create readable message for api.ai
  */
-var defaultSource = 'Crédit Mutuel Arkéa';
+var defaultSource = 'Stéphane Castrec';
+
+var createMentorsMessage = function(type, mentorsList){
+  var msg = 'Les mentors ' + type + 'sont ';
+  for(mentor :mentorsList){
+    if(mentor.twitter){
+      msg += mentors.twitter;
+    } else {
+      msg += mentors.name;
+    }
+    msg += ', ';
+  }
+
+  //TODO rm last ','
+  return createResponse(msg, message, mentorsList);
+}
 
 var createError = function(statusCode, message){
   var response = {
@@ -35,5 +50,6 @@ var createResponse = function(speech, message, data, source){
 
 module.exports = {
   createError : createError,
-  createResponse : createResponse
+  createResponse : createResponse,
+  createMentorsMessage: createMentorsMessage
 };
