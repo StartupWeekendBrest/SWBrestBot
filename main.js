@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 // Endpoint for api.ai
 app.post('/apiwebhook', function(req, res){
   //check authentication
-  if(req.header('token', null) != myApiKey){
+  if(req.headers.token != myApiKey){
     console.log("token inccorect : " + req.headers.token);
     res.statusCode = 401;
     res.send('error');
