@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.post('/apiwebhook', function(req, res){
   //check authentication
   if(req.header('token', null) != myApiKey){
-    console.log("token inccorect : " + req.headers('token'));
+    console.log("token inccorect : " + req.headers.token);
     res.statusCode = 401;
     res.send('error');
   } else {
@@ -25,7 +25,7 @@ app.post('/apiwebhook', function(req, res){
         case 'mentor_search':
             console.log("action.mentors_type");
             mentors.getMentors(action.mentors_type, function (mentorsList){
-              res.send(apiaiHelper.createMentorsMessage(action.mentors_type, mentors));              
+              res.send(apiaiHelper.createMentorsMessage(action.mentors_type, mentors));
             })
             break;
         case 'action.time':
