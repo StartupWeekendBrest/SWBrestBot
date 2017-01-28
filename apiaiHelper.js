@@ -5,13 +5,18 @@ var defaultSource = 'Stéphane Castrec';
 
 var createMentorsMessage = function(type, mentorsList){
   var msg = 'Les mentors ' + type + 'sont ';
-  for(mentor :mentorsList){
-    if(mentor.twitter){
-      msg += mentors.twitter;
-    } else {
-      msg += mentors.name;
+  if(type){
+    //we receive a tab
+    for(mentor in mentorsList){
+      if(mentor.twitter){
+        msg += mentors.twitter;
+      } else {
+        msg += mentors.name;
+      }
+      msg += ', ';
     }
-    msg += ', ';
+  } else {
+    msg = "La liste des mentors est disponible ici. http://www.up.co/communities/france/brest/startup-weekend/10230 (Ou demande moi une compétence particulière)";
   }
 
   //TODO rm last ','

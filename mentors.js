@@ -26,8 +26,7 @@ var mentors = {
       twitter: '@mansencalo'
     },
   ],
-  bp : {
-    [
+  bp : [
       {
         name : 'Jennifer Ogor',
         twitter: '@mansencalo'
@@ -48,18 +47,14 @@ var mentors = {
         name : 'Mickael Bleuse',
         twitter: '@bleuseMickael'
       }
-    ]
-  },
-  design : {
-    [
+    ],
+  design : [
       {
         name : 'Yanna Fournier',
         twitter: '@pilde29'
       }
-    ]
-  },
-  juridique : {
-    [
+    ],
+  juridique : [
       {
         name : 'Jean-Pierre Blin',
         twitter: ''
@@ -68,10 +63,8 @@ var mentors = {
         name : 'Xavier Moal',
         twitter: ''
       }
-    ]
-  },
-  commerce : {
-    [
+    ],
+  commerce : [
       {
         name : 'Jennifer Ogor',
         twitter: '@mansencalo'
@@ -80,9 +73,8 @@ var mentors = {
         name : 'Erwan Bescond ',
         twitter: ''
       }
-    ]
-  },
-}
+    ],
+  };
 var getMentors = function (type, callback){
   if(type){
     //search specific mentors
