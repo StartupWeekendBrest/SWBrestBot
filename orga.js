@@ -25,7 +25,7 @@ var orga = [
   },
   {
     name: 'Maxime Gourmelen',
-    twitter: '@MaxieGourmelen'
+    twitter: '@MaximeGourmelen'
   },
   {
     name: 'Steven Le Roux',
