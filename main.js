@@ -2,7 +2,7 @@ var apiHelper = require('./apiaiHelper.js');
 //DAO (will use mongo in futur)
 var mentors = require('./mentors.js');
 var sponsors = require('./sponsors.js');
-var orgas = require('./orgas.js');
+var orgas = require('./orga.js');
 
 var bodyParser = require('body-parser')
 var express = require('express');
