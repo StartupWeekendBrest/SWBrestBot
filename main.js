@@ -21,6 +21,7 @@ app.post('/apiwebhook', function(req, res){
     console.log("apiwebhook "+ JSON.stringify(req.body));
     var request = req.body;
     if(request.result){
+      console.log(request);
       switch (request.result.action) {
         case 'mentor_search':
             console.log("action.mentors_type");
