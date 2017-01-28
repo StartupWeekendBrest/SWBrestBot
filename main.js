@@ -10,6 +10,12 @@ var myApiKey = "MyAuthenticationTokenIsHereAndIWillFoundABetterLater";
 /** understand JSON in body. */
 app.use(bodyParser.json());
 
+app.get('/test', function(req, res){
+  mentors.getMentors('bp', function (mentorsList){
+    res.send(apiHelper.createMentorsMessage('bp', mentorsList));
+  });
+});
+
 // Endpoint for api.ai
 app.post('/apiwebhook', function(req, res){
   //check authentication
@@ -27,7 +33,7 @@ app.post('/apiwebhook', function(req, res){
             console.log("action.mentors_type");
             mentors.getMentors(request.result.parameters.mentors_type, function (mentorsList){
               res.send(apiHelper.createMentorsMessage(request.result.parameters.mentors_type, mentorsList));
-            })
+            });
             break;
         case 'action.time':
             console.log("action.time");
