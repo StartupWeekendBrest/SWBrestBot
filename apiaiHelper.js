@@ -9,9 +9,9 @@ var createMentorsMessage = function(type, mentorsList){
     //we receive a tab
     for(mentor in mentorsList){
       if(mentor.twitter){
-        msg += mentors.twitter;
+        msg += mentor.twitter;
       } else {
-        msg += mentors.name;
+        msg += mentor.name;
       }
       msg += ', ';
     }
