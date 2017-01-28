@@ -1,5 +1,5 @@
 var apiHelper = require('./apiaiHelper.js');
-//DAO
+//DAO (will use mongo in futur)
 var mentors = require('./mentors.js');
 var sponsors = require('./sponsors.js');
 var orgas = require('./orgas.js');
