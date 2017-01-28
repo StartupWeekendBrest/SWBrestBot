@@ -8,6 +8,7 @@ var createMentorsMessage = function(type, mentorsList){
   if(type){
     //we receive a tab
     for(mentor in mentorsList){
+      console.log("iteration - " + JSON.stringify(mentor));
       if(mentor.twitter){
         msg += mentor.twitter;
       } else {
