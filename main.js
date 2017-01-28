@@ -24,7 +24,7 @@ app.post('/apiwebhook', function(req, res){
       switch (request.result.action) {
         case 'mentor_search':
             console.log("action.mentors_type");
-            mentors.getMentors(action.mentors_type, function (mentorsList){
+            mentors.getMentors(request.result.mentors_type, function (mentorsList){
               res.send(apiaiHelper.createMentorsMessage(action.mentors_type, mentors));
             })
             break;
@@ -65,7 +65,7 @@ http.listen(8080, function(){
 var getTime = function(cb){
   var date = new Date();
   var data = {};
-  var speech =  'Il est ' + date.getUTCHours() + ':' + date.getUTCMinutes() + ' et ' + date.getUTCSeconds() + " secondes.";
+  var speech =  'Il est ' + (date.getUTCHours() + 1) + ':' + date.getUTCMinutes() + ' et ' + date.getUTCSeconds() + " secondes.";
   var response = apiHelper.createResponse(speech, speech, data, 'Crédit Mutuel Arkéa');
   cb(response);
 }
