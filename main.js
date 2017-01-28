@@ -24,7 +24,7 @@ app.post('/apiwebhook', function(req, res){
       switch (request.result.action) {
         case 'mentor_search':
             console.log("action.mentors_type");
-            mentors.getMentors(request.result.mentors_type, function (mentorsList){
+            mentors.getMentors(request.result.parameters.mentors_type, function (mentorsList){
               res.send(apiHelper.createMentorsMessage(request.result.mentors_type, mentors));
             })
             break;
