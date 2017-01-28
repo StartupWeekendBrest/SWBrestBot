@@ -17,7 +17,7 @@ var createOrgasMessage = function(orgaList){
       msg += ', ';
     }
   }
-  return createResponse(msg, msg, sponsorsList);
+  return createResponse(msg, msg, orgaList);
 }
 
 var createSponsorsMessage = function(sponsorsList){
