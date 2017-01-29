@@ -25,10 +25,10 @@ var createWinnersMessage = function(year, winnersList){
   return createResponse(msg, msg, winnersList);
 }
 
-var createJurysMessage = function(juryList){
+var createJurysMessage = function(year, juryList){
   var msg = 'Les jurys sont ';
   if(!juryList  || juryList.length ==0){
-    msg= 'Je ne connais pas les jurys de cette année.';
+    msg= 'Je ne connais pas les jurys de ' + year;
   } else {
     var orga;
     for(var i=0; i<juryList.length; i++){
