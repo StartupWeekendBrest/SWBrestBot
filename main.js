@@ -46,7 +46,7 @@ app.post('/apiwebhook', function(req, res){
               if(request.result.parameters.year_period){
                 year = parseInt(request.result.parameters.year_period.substring(0, 4));//+0 to transform as int
               } else {
-                year = 2016;
+                year = 2017;
               }
             }
             winners.getWinners(year, function (mentorsList){
