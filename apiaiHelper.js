@@ -4,17 +4,22 @@
 var defaultSource = 'Stéphane Castrec';
 
 var createWinnersMessage = function(winnersList){
-  var msg = 'Les winners sont ';
-  var orga;
-  for(var i=0; i<winnersList.length; i++){
-    orga = winnersList[i];
-    if(orga.twitter){
-      msg += '@'+orga.twitter;
-    } else {
-      msg += orga.name;
-    }
-    if(i != winnersList.length-1){
-      msg += ', ';
+  var msg;
+  if(!winnersList){
+    msg = 'Je ne connais pas encore les winners de cette année.';
+  } else {
+    msg = 'Les winners sont ';
+    var orga;
+    for(var i=0; i<winnersList.length; i++){
+      orga = winnersList[i];
+      if(orga.twitter){
+        msg += '@'+orga.twitter;
+      } else {
+        msg += orga.name;
+      }
+      if(i != winnersList.length-1){
+        msg += ', ';
+      }
     }
   }
   return createResponse(msg, msg, winnersList);

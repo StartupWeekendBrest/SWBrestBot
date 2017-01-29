@@ -40,13 +40,13 @@ app.post('/apiwebhook', function(req, res){
         case 'winners_search':
             console.log("action.winners_search");
             winner.getWinners(request.result.parameters.year, function (mentorsList){
-              res.send(apiHelper.createMentorsMessage(request.result.parameters.mentors_type, mentorsList));
+              res.send(apiHelper.createWinnersMessage(request.result.parameters.year, mentorsList));
             });
             break;
         case 'jury_search':
             console.log("action.jury_search");
             jury.getJury(request.result.parameters.year, function (mentorsList){
-              res.send(apiHelper.createMentorsMessage(request.result.parameters.mentors_type, mentorsList));
+              res.send(apiHelper.createJurysMessage(request.result.parameters.mentors_type, mentorsList));
             });
             break;
         case 'mentor_search':

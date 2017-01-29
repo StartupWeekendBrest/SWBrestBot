@@ -4,23 +4,18 @@ var COLLECTION = "WINNERS";
 var db;
 
 var getWinners = function (year, callback){
-  if(type){
+  if(!year){
+    year = 2017; //fixme
+  }
     //search specific mentors
     //return all mentors
     db.collection(COLLECTION, function(coll){
-      coll.find({'type':type}).toArray(function(err, mentors){
+      coll.find({'year':year}).toArray(function(err, mentors){
           callback(mentors);
       });
       return;
     });
-  } else {
-    //return all mentors
-    db.collection(COLLECTION, function(coll){
-      coll.find().toArray(function(err, mentors){
-          callback(mentors);
-      });
-    });
-  }
+  
   return;
 }
 
