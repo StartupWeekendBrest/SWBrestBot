@@ -27,16 +27,20 @@ var createWinnersMessage = function(winnersList){
 
 var createJurysMessage = function(juryList){
   var msg = 'Les jurys sont ';
-  var orga;
-  for(var i=0; i<juryList.length; i++){
-    orga = juryList[i];
-    if(orga.twitter){
-      msg += '@'+orga.twitter;
-    } else {
-      msg += orga.name;
-    }
-    if(i != juryList.length-1){
-      msg += ', ';
+  if(!juryList){
+    msg= 'Je ne connais pas les jurys de cette année.';
+  } else {
+    var orga;
+    for(var i=0; i<juryList.length; i++){
+      orga = juryList[i];
+      if(orga.twitter){
+        msg += '@'+orga.twitter;
+      } else {
+        msg += orga.name;
+      }
+      if(i != juryList.length-1){
+        msg += ', ';
+      }
     }
   }
   return createResponse(msg, msg, juryList);
@@ -44,16 +48,20 @@ var createJurysMessage = function(juryList){
 
 var createOrgasMessage = function(juryList){
   var msg = 'Les orgas sont ';
-  var orga;
-  for(var i=0; i<juryList.length; i++){
-    orga = orgaList[i];
-    if(orga.twitter){
-      msg += '@'+orga.twitter;
-    } else {
-      msg += orga.name;
-    }
-    if(i != juryList.length-1){
-      msg += ', ';
+  if(!juryList){
+    msg= 'Je ne connais pas les orgas de cette année.';
+  } else {
+    var orga;
+    for(var i=0; i<juryList.length; i++){
+      orga = orgaList[i];
+      if(orga.twitter){
+        msg += '@'+orga.twitter;
+      } else {
+        msg += orga.name;
+      }
+      if(i != juryList.length-1){
+        msg += ', ';
+      }
     }
   }
   return createResponse(msg, msg, juryList);
@@ -61,12 +69,16 @@ var createOrgasMessage = function(juryList){
 
 var createSponsorsMessage = function(sponsorsList){
   var msg = 'Les sponsors sont ';
-  var sponsor;
-  for(var i=0; i<sponsorsList.length; i++){
-    sponsor = sponsorsList[i];
-    msg += sponsor.name;
-    if(i != sponsorsList.length-1){
-      msg += ', ';
+  if(!juryList){
+    msg= 'Je ne connais pas les sponsors de cette année.';
+  } else {
+    var sponsor;
+    for(var i=0; i<sponsorsList.length; i++){
+      sponsor = sponsorsList[i];
+      msg += sponsor.name;
+      if(i != sponsorsList.length-1){
+        msg += ', ';
+      }
     }
   }
   return createResponse(msg, msg, sponsorsList);
@@ -74,22 +86,27 @@ var createSponsorsMessage = function(sponsorsList){
 
 var createMentorsMessage = function(type, mentorsList){
   var msg = 'Les mentors ' + type + ' sont ';
-  if(type){
-    //we receive a tab
-    var mentor;
-    for(var i=0; i<mentorsList.length; i++){
-      mentor = mentorsList[i];
-      if(mentor.twitter){
-        msg +=  '@'+mentor.twitter;
-      } else {
-        msg += mentor.name;
-      }
-      if(i != mentorsList.length-1){
-        msg += ', ';
-      }
-    }
+  if(!mentorsList){
+    msg= 'Je ne connais pas les mentors de cette année.';
   } else {
-    msg = "La liste des mentors est disponible ici. http://www.up.co/communities/france/brest/startup-weekend/10230 (Ou demande moi une compétence particulière)";
+    msg = 'Les mentors ' + type + ' sont ';
+    if(type){
+      //we receive a tab
+      var mentor;
+      for(var i=0; i<mentorsList.length; i++){
+        mentor = mentorsList[i];
+        if(mentor.twitter){
+          msg +=  '@'+mentor.twitter;
+        } else {
+          msg += mentor.name;
+        }
+        if(i != mentorsList.length-1){
+          msg += ', ';
+        }
+      }
+    } else {
+      msg = "La liste des mentors est disponible ici. http://www.up.co/communities/france/brest/startup-weekend/10230 (Ou demande moi une compétence particulière)";
+    }
   }
 
   return createResponse(msg, msg, mentorsList);
