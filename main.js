@@ -41,10 +41,10 @@ app.post('/apiwebhook', function(req, res){
             console.log("action.winners_search");
             var year;
             if(request.result.parameters.year){
-              year = request.result.parameters.year + 0;
+              year = parseInt(request.result.parameters.year);
             } else {
               if(request.result.parameters.year_period){
-                year = request.result.parameters.year_period.substring(0, 4)+0;//+0 to transform as int
+                year = parseInt(request.result.parameters.year_period.substring(0, 4));//+0 to transform as int
               } else {
                 year = 2016;
               }
@@ -57,10 +57,10 @@ app.post('/apiwebhook', function(req, res){
             console.log("action.jury_search");
             var year;
             if(request.result.parameters.year){
-              year = request.result.parameters.year + 0;
+              year = parseInt(request.result.parameters.year);
             } else {
               if(request.result.parameters.year_period){
-                year = request.result.parameters.year_period.substring(0, 4)+0;//+0 to transform as int
+                year = parseInt(request.result.parameters.year_period.substring(0, 4));//+0 to transform as int
               } else {
                 year = 2017;
               }
