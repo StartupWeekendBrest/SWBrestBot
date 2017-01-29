@@ -9,7 +9,7 @@ var createOrgasMessage = function(orgaList){
   for(var i=0; i<orgaList.length; i++){
     orga = orgaList[i];
     if(orga.twitter){
-      msg += orga.twitter;
+      msg += '@'+orga.twitter;
     } else {
       msg += orga.name;
     }
@@ -41,7 +41,7 @@ var createMentorsMessage = function(type, mentorsList){
     for(var i=0; i<mentorsList.length; i++){
       mentor = mentorsList[i];
       if(mentor.twitter){
-        msg += mentor.twitter;
+        msg +=  '@'+mentor.twitter;
       } else {
         msg += mentor.name;
       }

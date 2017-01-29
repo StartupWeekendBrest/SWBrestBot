@@ -16,8 +16,8 @@ var myApiKey = "MyAuthenticationTokenIsHereAndIWillFoundABetterLater";
 app.use(bodyParser.json());
 
 app.get('/test', function(req, res){
-  orgas.getOrgas(function (mentorsList){
-    res.send(apiHelper.createOrgasMessage(mentorsList));
+  mentors.getMentors('', function (mentorsList){
+    res.send(apiHelper.createMentorsMessage('', mentorsList));
   });
 });
 

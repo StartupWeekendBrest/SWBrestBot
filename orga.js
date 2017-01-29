@@ -5,7 +5,7 @@ var db;
 
 var getOrgas = function (callback){
   //return all mentors
-  sdb.collection(COLLECTION, function(coll){
+  db.collection(COLLECTION, function(coll){
     coll.find().toArray(function(err, orgas){
         callback(orgas);
     });
