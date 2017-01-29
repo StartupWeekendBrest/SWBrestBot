@@ -6,7 +6,7 @@ var defaultSource = 'Stéphane Castrec';
 var createWinnersMessage = function(year, winnersList){
   var msg;
   if(!winnersList || winnersList.length ==0){
-    msg = 'Je ne connais pas encore les winners de cette année.';
+    msg = 'Je ne connais pas encore les winners de ' + year;
   } else {
     msg = 'Les winners '+ year + ' sont ';
     var orga;
