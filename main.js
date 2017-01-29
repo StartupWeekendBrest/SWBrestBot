@@ -55,8 +55,18 @@ app.post('/apiwebhook', function(req, res){
             break;
         case 'jury_search':
             console.log("action.jury_search");
-            jury.getJury(request.result.parameters.year, function (mentorsList){
-              res.send(apiHelper.createJurysMessage(request.result.parameters.mentors_type, mentorsList));
+            var year;
+            if(request.result.parameters.year){
+              year = request.result.parameters.year + 0;
+            } else {
+              if(request.result.parameters.year_period){
+                year = request.result.parameters.year_period.substring(0, 4)+0;//+0 to transform as int
+              } else {
+                year = 2017;
+              }
+            }
+            jury.getJury(year, function (mentorsList){
+              res.send(apiHelper.createJurysMessage(year, mentorsList));
             });
             break;
         case 'mentor_search':
