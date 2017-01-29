@@ -4,6 +4,9 @@ var mongo = require('./mongo.js');
 var mentors = require('./mentors.js')(mongo);
 var sponsors = require('./sponsors.js')(mongo);
 var orgas = require('./orga.js')(mongo);
+var jury = require('./jury.js')(mongo);
+var winners = require('./winners.js')(mongo);
+
 
 var bodyParser = require('body-parser')
 var express = require('express');
@@ -16,8 +19,8 @@ var myApiKey = "MyAuthenticationTokenIsHereAndIWillFoundABetterLater";
 app.use(bodyParser.json());
 
 app.get('/test', function(req, res){
-  sponsors.getSponsors(function (sponsorsList){
-    res.send(apiHelper.createSponsorsMessage(sponsorsList));
+  jury.getJury('', function (sponsorsList){
+    res.send(apiHelper.createJurysMessage(sponsorsList));
   });
 });
 
@@ -34,6 +37,18 @@ app.post('/apiwebhook', function(req, res){
     if(request.result){
       console.log(request);
       switch (request.result.action) {
+        case 'winners_search':
+            console.log("action.winners_search");
+            winner.getWinners(request.result.parameters.year, function (mentorsList){
+              res.send(apiHelper.createMentorsMessage(request.result.parameters.mentors_type, mentorsList));
+            });
+            break;
+        case 'jury_search':
+            console.log("action.jury_search");
+            jury.getJury(request.result.parameters.year, function (mentorsList){
+              res.send(apiHelper.createMentorsMessage(request.result.parameters.mentors_type, mentorsList));
+            });
+            break;
         case 'mentor_search':
             console.log("action.mentors_type");
             mentors.getMentors(request.result.parameters.mentors_type, function (mentorsList){

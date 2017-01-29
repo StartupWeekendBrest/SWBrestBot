@@ -3,21 +3,55 @@
  */
 var defaultSource = 'Stéphane Castrec';
 
-var createOrgasMessage = function(orgaList){
+var createWinnersMessage = function(winnersList){
+  var msg = 'Les winners sont ';
+  var orga;
+  for(var i=0; i<winnersList.length; i++){
+    orga = winnersList[i];
+    if(orga.twitter){
+      msg += '@'+orga.twitter;
+    } else {
+      msg += orga.name;
+    }
+    if(i != winnersList.length-1){
+      msg += ', ';
+    }
+  }
+  return createResponse(msg, msg, winnersList);
+}
+
+var createJurysMessage = function(juryList){
+  var msg = 'Les jurys sont ';
+  var orga;
+  for(var i=0; i<juryList.length; i++){
+    orga = juryList[i];
+    if(orga.twitter){
+      msg += '@'+orga.twitter;
+    } else {
+      msg += orga.name;
+    }
+    if(i != juryList.length-1){
+      msg += ', ';
+    }
+  }
+  return createResponse(msg, msg, juryList);
+}
+
+var createOrgasMessage = function(juryList){
   var msg = 'Les orgas sont ';
   var orga;
-  for(var i=0; i<orgaList.length; i++){
+  for(var i=0; i<juryList.length; i++){
     orga = orgaList[i];
     if(orga.twitter){
       msg += '@'+orga.twitter;
     } else {
       msg += orga.name;
     }
-    if(i != orgaList.length-1){
+    if(i != juryList.length-1){
       msg += ', ';
     }
   }
-  return createResponse(msg, msg, orgaList);
+  return createResponse(msg, msg, juryList);
 }
 
 var createSponsorsMessage = function(sponsorsList){
@@ -92,4 +126,6 @@ module.exports = {
   createMentorsMessage: createMentorsMessage,
   createSponsorsMessage : createSponsorsMessage,
   createOrgasMessage : createOrgasMessage,
+  createJurysMessage : createJurysMessage,
+  createWinnersMessage : createWinnersMessage
 };
