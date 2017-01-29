@@ -1,39 +1,16 @@
-//TODO use database
-var sponsors = [
-  {
-    name: 'Crédit Mutuel Arkéa'
-  },
-  {
-    name: 'Brest Open Campus'
-  },
-  {
-    name: 'Enedis'
-  },
-  {
-    name: 'Finistère 2.9'
-  },
-  {
-    name: 'Investir en finistère'
-  },
-  {
-    name: 'French Tech B+'
-  },
-  {
-    name: 'Technopole Brest-Iroise'
-  },
-  {
-    name: 'B. digitale globale'
-  },
-  {
-    name: 'Freeletics'
-  },
-  {
-    name: 'C for com'
-  }
-];
+//mongo collection
+var COLLECTION = "SPONSORS";
+//db instance
+var db;
+
 var getSponsors = function (callback){
   //return all mentors
-  callback(sponsors);
+  db.collection(COLLECTION, function(coll){
+    coll.find().toArray(function(err, sponsors){
+        callback(sponsors);
+    });
+    return;
+  });
   return;
 }
 
