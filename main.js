@@ -19,8 +19,8 @@ var myApiKey = "MyAuthenticationTokenIsHereAndIWillFoundABetterLater";
 app.use(bodyParser.json());
 
 app.get('/test', function(req, res){
-  jury.getJury('', function (sponsorsList){
-    res.send(apiHelper.createJurysMessage(sponsorsList));
+  winners.getWinners(2016, function (sponsorsList){
+    res.send(apiHelper.createWinnersMessage(year, sponsorsList));
   });
 });
 
@@ -39,7 +39,13 @@ app.post('/apiwebhook', function(req, res){
       switch (request.result.action) {
         case 'winners_search':
             console.log("action.winners_search");
-            winner.getWinners(request.result.parameters.year, function (mentorsList){
+            var year;
+            if(request.result.parameters.year){
+              year = request.result.parameters.year;
+            } else {
+              year = 2016;
+            }
+            winner.getWinners(year, function (mentorsList){
               res.send(apiHelper.createWinnersMessage(request.result.parameters.year, mentorsList));
             });
             break;

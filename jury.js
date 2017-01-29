@@ -7,6 +7,7 @@ var getJury = function (year, callback){
   if(!year){
     year = 2017;//FIXME
   }
+
   //search specific mentors
   //return all mentors
   db.collection(COLLECTION, function(coll){

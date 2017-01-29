@@ -3,12 +3,12 @@
  */
 var defaultSource = 'Stéphane Castrec';
 
-var createWinnersMessage = function(winnersList){
+var createWinnersMessage = function(year, winnersList){
   var msg;
-  if(!winnersList){
+  if(!winnersList || winnersList.length ==0){
     msg = 'Je ne connais pas encore les winners de cette année.';
   } else {
-    msg = 'Les winners sont ';
+    msg = 'Les winners '+ year + ' sont ';
     var orga;
     for(var i=0; i<winnersList.length; i++){
       orga = winnersList[i];
@@ -27,7 +27,7 @@ var createWinnersMessage = function(winnersList){
 
 var createJurysMessage = function(juryList){
   var msg = 'Les jurys sont ';
-  if(!juryList){
+  if(!juryList  || juryList.length ==0){
     msg= 'Je ne connais pas les jurys de cette année.';
   } else {
     var orga;
@@ -48,7 +48,7 @@ var createJurysMessage = function(juryList){
 
 var createOrgasMessage = function(juryList){
   var msg = 'Les orgas sont ';
-  if(!juryList){
+  if(!juryList  || juryList.length ==0){
     msg= 'Je ne connais pas les orgas de cette année.';
   } else {
     var orga;
@@ -69,7 +69,7 @@ var createOrgasMessage = function(juryList){
 
 var createSponsorsMessage = function(sponsorsList){
   var msg = 'Les sponsors sont ';
-  if(!juryList){
+  if(!juryList  || sponsorsList.length ==0){
     msg= 'Je ne connais pas les sponsors de cette année.';
   } else {
     var sponsor;
@@ -86,7 +86,7 @@ var createSponsorsMessage = function(sponsorsList){
 
 var createMentorsMessage = function(type, mentorsList){
   var msg = 'Les mentors ' + type + ' sont ';
-  if(!mentorsList){
+  if(!mentorsList || mentorsList.length ==0){
     msg= 'Je ne connais pas les mentors de cette année.';
   } else {
     msg = 'Les mentors ' + type + ' sont ';
