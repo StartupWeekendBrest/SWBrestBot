@@ -44,7 +44,7 @@ app.post('/apiwebhook', function(req, res){
               year = request.result.parameters.year;
             } else {
               if(request.result.parameters.year_period){
-                year = request.result.parameters.year_period.substring(0, 4);
+                year = request.result.parameters.year_period.substring(0, 4)+0;//+0 to transform as int
               } else {
                 year = 2016;
               }
