@@ -43,7 +43,11 @@ app.post('/apiwebhook', function(req, res){
             if(request.result.parameters.year){
               year = request.result.parameters.year;
             } else {
-              year = 2016;
+              if(request.result.parameters.year_period){
+                year = request.result.parameters.year_period.substring(0, 4);
+              } else {
+                year = 2016;
+              }
             }
             winners.getWinners(year, function (mentorsList){
               res.send(apiHelper.createWinnersMessage(year, mentorsList));
