@@ -126,6 +126,9 @@ var createError = function(statusCode, message){
 };
 
 var createResponse = function(speech, message, data, source){
+  if(!data){
+    data = {};
+  }
   data.slack = {
     text : message
   };
