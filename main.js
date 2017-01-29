@@ -45,7 +45,7 @@ app.post('/apiwebhook', function(req, res){
             } else {
               year = 2016;
             }
-            winner.getWinners(year, function (mentorsList){
+            winners.getWinners(year, function (mentorsList){
               res.send(apiHelper.createWinnersMessage(request.result.parameters.year, mentorsList));
             });
             break;

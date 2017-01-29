@@ -53,7 +53,7 @@ var createOrgasMessage = function(juryList){
   } else {
     var orga;
     for(var i=0; i<juryList.length; i++){
-      orga = orgaList[i];
+      orga = juryList[i];
       if(orga.twitter){
         msg += '@'+orga.twitter;
       } else {
