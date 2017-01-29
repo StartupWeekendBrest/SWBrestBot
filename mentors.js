@@ -1,3 +1,5 @@
+var db;
+
 //TODO use database
 var mentors = {
   technique : [
@@ -87,6 +89,9 @@ var getMentors = function (type, callback){
   return;
 }
 
-module.exports = {
-  getMentors : getMentors,
+module.exports = function(database){
+  var module = {};
+  db = database;
+  module.getMentors = getMentors;
+  return module;
 };

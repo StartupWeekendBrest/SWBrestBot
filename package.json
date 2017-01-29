@@ -6,7 +6,8 @@
   "author": "Stéphane Castrec <stephane.castrec@gmail.com>",
   "dependencies": {
     "express": "4.14.0",
-    "body-parser":"1.15.2"
+    "body-parser":"1.15.2",
+    "mongodb": "^2.2"
   },
   "scripts" : {
     "start" : "node main.js"

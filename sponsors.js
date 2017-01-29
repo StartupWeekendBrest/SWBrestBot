@@ -37,6 +37,9 @@ var getSponsors = function (callback){
   return;
 }
 
-module.exports = {
-  getSponsors : getSponsors,
+module.exports = function(database){
+  var module = {};
+  db = database;
+  module.getSponsors = getSponsors;
+  return module;
 };

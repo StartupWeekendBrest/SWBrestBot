@@ -1,8 +1,9 @@
 var apiHelper = require('./apiaiHelper.js');
+var mongo = require('./mongo.js');
 //DAO (will use mongo in futur)
-var mentors = require('./mentors.js');
-var sponsors = require('./sponsors.js');
-var orgas = require('./orga.js');
+var mentors = require('./mentors.js')(mongo);
+var sponsors = require('./sponsors.js')(mongo);
+var orgas = require('./orga.js')(mongo);
 
 var bodyParser = require('body-parser')
 var express = require('express');
@@ -15,8 +16,8 @@ var myApiKey = "MyAuthenticationTokenIsHereAndIWillFoundABetterLater";
 app.use(bodyParser.json());
 
 app.get('/test', function(req, res){
-  mentors.getMentors('bp', function (mentorsList){
-    res.send(apiHelper.createMentorsMessage('bp', mentorsList));
+  orgas.getOrgas(function (mentorsList){
+    res.send(apiHelper.createOrgasMessage(mentorsList));
   });
 });
 
