@@ -46,7 +46,7 @@ app.post('/apiwebhook', function(req, res){
               year = 2016;
             }
             winners.getWinners(year, function (mentorsList){
-              res.send(apiHelper.createWinnersMessage(request.result.parameters.year, mentorsList));
+              res.send(apiHelper.createWinnersMessage(year, mentorsList));
             });
             break;
         case 'jury_search':
